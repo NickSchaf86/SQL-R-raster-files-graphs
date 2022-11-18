@@ -55,8 +55,7 @@ wind4C %>% head(50) %>% collect() %>% View()
 wind_4C <- as.data.frame(wind4C)
 
 
-###two windstorms were simulated, one at 10 yr and one at 50 yr. Bark beetle outbreaks were activated by a high "stormActivation_ha" and infested area grew from year x+1, was highest in x+4 and subsided after x+5/6.
-###"killedVolume" was 4 times as high in outbreak years as during non-outbreak years" under normal temp. Under plus4C, the peak of the outbreak occurs in y3. Total volume is much higher after windstorm 1 (798232/175253) but smaller after windstorm 2.  (156808/231289). 
+###two windstorms were simulated, one at 10 yr and one at 50 yr. Bark beetle outbreaks were activated by a high "stormActivation_ha" and infested area grew from year x+1.
 
 
 ##plot data
@@ -143,7 +142,7 @@ BB_BA_ha = ggplot() +
 plot(BB_BA_ha)
 
 ### Looking at the tree composition through time
-###Plot number of trees under both climate scenarios     !!!compare count_Ha with BA_m2 
+###Plot number of trees under both climate scenarios     
 
 ggplot(data = landscape_0C, aes(x = year, y = count_ha)) + geom_line() +
   facet_wrap(~species) +
@@ -161,8 +160,6 @@ ggplot(data = landscape_0C, aes(x = year, y = basal_area_m2)) + geom_line() +
 ggplot(data = landscape_4C, aes(x = year, y = basal_area_m2)) + geom_line() +
   facet_wrap(~species) +
   labs(title = "Tree BA_ha +4C") 
-
-### Picea abies decreases in number and BA through time, with no recovery. Only Fagus sylvatica increases in number and BA.
 
 ###Plot forest structure at t=0, 20, 40, 60, 80, 100 for both scenarios 
 ### Make a stacked bar chart of forest composition (# trees) 
@@ -182,7 +179,7 @@ ggplot(landscape_4C, aes(fill=species, y=basal_area_m2, x=year)) +
   labs(title = "Tree BA-ha +4C") +
   scale_x_continuous(limits = c(80, 100)) 
   
-##Final graph of the total amount of removed tree volume for Picea abies !!! 
+##Final graph of the total amount of removed tree volume for Picea abies  
 
 piab_landscape_removed_0C <- filter(landscape_removed_0C, species == "piab")
 piab_landscape_removed_4C <- filter(landscape_removed_4C, species == "piab")
@@ -209,7 +206,7 @@ PiAb_4C_vol = ggplot() +
   labs(title = "Picea abies BA_m2 +4C")
 plot(PiAb_4C_vol)
 
-##reasons of Picea abies mortality are Natural mortality or Disturbance, only. What are the causes for the natural mortality?
+
 
 
        
